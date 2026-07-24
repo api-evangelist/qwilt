@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Certificate Manager Certificate Templates Site Configurations API
+  version: v2
+  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/docs/certificate-management-1
+  license:
+    name: Proprietary
+servers:
+- url: https://cert-manager.cqloud.com
+  description: Qwilt CDN production (Certificate Manager host)
+security:
+- apiKeyAuth: []
+- bearerAuth: []
+tags:
+- name: Site Configurations
+  description: Versioned site configuration revisions
+paths:
+  /api/1/sites/{siteId}/configurations:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: listSiteConfigurations
+      tags:
+      - Site Configurations
+      summary: List site configuration revisions
+      responses:
+        '200':
+          description: Configuration revisions for the site.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SiteConfiguration'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createSiteConfiguration
+      tags:
+      - Site Configurations
+      summary: Create a site configuration revision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteConfiguration'
+      responses:
+        '201':
+          description: Configuration revision created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteConfiguration'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/1/sites/{siteId}/configurations/{revisionId}:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    - name: revisionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getSiteConfiguration
+      tags:
+      - Site Configurations
+      summary: Get a site configuration revision
+      responses:
+        '200':
+          description: The configuration revision.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteConfiguration'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    BadRequest:
+      description: The request was malformed.
+  schemas:
+    SiteConfiguration:
+      type: object
+      description: A versioned site configuration revision.
+      additionalProperties: true
+      properties:
+        siteId:
+          type: string
+        revisionId:
+          type: string
+        hosts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            properties:
+              host:
+                type: string
+              host-metadata:
+                type: object
+                additionalProperties: true
+                properties:
+                  endpoints:
+                    type: array
+                    items:
+                      type: string
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client

@@ -1,0 +1,190 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Certificate Manager Certificate Templates Sites API
+  version: v2
+  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/docs/certificate-management-1
+  license:
+    name: Proprietary
+servers:
+- url: https://cert-manager.cqloud.com
+  description: Qwilt CDN production (Certificate Manager host)
+security:
+- apiKeyAuth: []
+- bearerAuth: []
+tags:
+- name: Sites
+  description: CDN media-delivery site objects
+paths:
+  /api/v2/sites:
+    get:
+      operationId: listSites
+      tags:
+      - Sites
+      summary: List sites
+      description: Retrieve all media-delivery sites in the organization.
+      parameters:
+      - name: truncateConfigs
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: When true, omit full configuration bodies from the response.
+      responses:
+        '200':
+          description: A list of sites.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createSite
+      tags:
+      - Sites
+      summary: Create a site
+      description: Create a new media-delivery site.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteCreate'
+      responses:
+        '201':
+          description: Site created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /api/v2/sites/{siteId}:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: getSite
+      tags:
+      - Sites
+      summary: Get a site
+      responses:
+        '200':
+          description: The site.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateSite
+      tags:
+      - Sites
+      summary: Update a site
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteCreate'
+      responses:
+        '200':
+          description: Site updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSite
+      tags:
+      - Sites
+      summary: Delete a site
+      parameters:
+      - name: permanent
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: When true, permanently delete the site.
+      responses:
+        '200':
+          description: Site deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: The API key lacks permission for this operation.
+    NotFound:
+      description: The requested resource does not exist.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    BadRequest:
+      description: The request was malformed.
+  schemas:
+    Site:
+      type: object
+      description: A media-delivery site.
+      additionalProperties: true
+      properties:
+        siteId:
+          type: string
+        apiVersion:
+          type: string
+        revisionId:
+          type: string
+        siteDnsCnameDelegationTarget:
+          type: string
+          description: The CNAME delegation target for the site.
+    SiteCreate:
+      type: object
+      additionalProperties: true
+      properties:
+        apiVersion:
+          type: string
+        siteName:
+          type: string
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client

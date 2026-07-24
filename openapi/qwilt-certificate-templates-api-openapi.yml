@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Certificate Manager Certificate Templates API
+  version: v2
+  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/docs/certificate-management-1
+  license:
+    name: Proprietary
+servers:
+- url: https://cert-manager.cqloud.com
+  description: Qwilt CDN production (Certificate Manager host)
+security:
+- apiKeyAuth: []
+- bearerAuth: []
+tags:
+- name: Certificate Templates
+  description: Certificate templates for Qwilt-managed CSR workflows
+paths:
+  /api/v2/certificate-templates:
+    get:
+      operationId: listCertificateTemplates
+      tags:
+      - Certificate Templates
+      summary: List certificate templates
+      responses:
+        '200':
+          description: A list of certificate templates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificateTemplate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCertificateTemplate
+      tags:
+      - Certificate Templates
+      summary: Create a certificate template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificateTemplate'
+      responses:
+        '201':
+          description: Certificate template created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateTemplate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    BadRequest:
+      description: The request was malformed.
+  schemas:
+    CertificateTemplate:
+      type: object
+      description: A certificate template driving a Qwilt-managed CSR workflow.
+      additionalProperties: true
+      properties:
+        certificateTemplateId:
+          type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client

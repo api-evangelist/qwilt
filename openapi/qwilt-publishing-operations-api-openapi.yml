@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Certificate Manager Certificate Templates Publishing Operations API
+  version: v2
+  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/docs/certificate-management-1
+  license:
+    name: Proprietary
+servers:
+- url: https://cert-manager.cqloud.com
+  description: Qwilt CDN production (Certificate Manager host)
+security:
+- apiKeyAuth: []
+- bearerAuth: []
+tags:
+- name: Publishing Operations
+  description: Publish, un-publish, republish and cancel operations
+paths:
+  /api/v2/sites/{siteId}/publishing-operations:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: listPublishingOperations
+      tags:
+      - Publishing Operations
+      summary: List publishing operations
+      responses:
+        '200':
+          description: Publishing operations for the site.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublishingOperation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPublishingOperation
+      tags:
+      - Publishing Operations
+      summary: Publish a site configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishingOperation'
+      responses:
+        '201':
+          description: Publishing operation created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishingOperation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v2/sites/{siteId}/publishing-operations/{publishId}:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    - name: publishId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPublishingOperation
+      tags:
+      - Publishing Operations
+      summary: Get a publishing operation
+      responses:
+        '200':
+          description: The publishing operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishingOperation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/v2/sites/{siteId}/publishing-operations/actions/un-publish:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    post:
+      operationId: unpublishSite
+      tags:
+      - Publishing Operations
+      summary: Un-publish a site
+      responses:
+        '200':
+          description: Un-publish operation accepted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v2/sites/{siteId}/publishing-operations/actions/republish:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    post:
+      operationId: republishSite
+      tags:
+      - Publishing Operations
+      summary: Republish a site
+      responses:
+        '200':
+          description: Republish operation accepted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /api/v2/sites/{siteId}/publishing-operations/{publishId}/actions/cancel:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    - name: publishId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: cancelPublishingOperation
+      tags:
+      - Publishing Operations
+      summary: Cancel a publishing operation
+      responses:
+        '200':
+          description: Cancel operation accepted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    BadRequest:
+      description: The request was malformed.
+  schemas:
+    PublishingOperation:
+      type: object
+      description: A publish / un-publish / republish operation on a site.
+      additionalProperties: true
+      properties:
+        siteId:
+          type: string
+        publishId:
+          type: string
+        revisionId:
+          type: string
+        operationType:
+          type: string
+          description: e.g. Publish or Unpublish.
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client

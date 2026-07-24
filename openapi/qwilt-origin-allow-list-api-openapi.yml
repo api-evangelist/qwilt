@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Certificate Manager Certificate Templates Origin Allow List API
+  version: v2
+  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/docs/certificate-management-1
+  license:
+    name: Proprietary
+servers:
+- url: https://cert-manager.cqloud.com
+  description: Qwilt CDN production (Certificate Manager host)
+security:
+- apiKeyAuth: []
+- bearerAuth: []
+tags:
+- name: Origin Allow List
+  description: Qwilt CDN egress IP addresses for origin allow-listing
+paths:
+  /api/1.0/network/device-ip:
+    get:
+      operationId: getOriginAllowList
+      tags:
+      - Origin Allow List
+      summary: Get the origin allow list
+      description: Retrieve the comprehensive list of IP addresses that Qwilt CDN may use to fetch content from your origin, grouped by ISP network.
+      responses:
+        '200':
+          description: The origin allow list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OriginAllowList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication is missing or invalid.
+  schemas:
+    OriginAllowList:
+      type: object
+      description: IP addresses Qwilt CDN uses to fetch from origin, grouped by ISP network.
+      additionalProperties: true
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client
