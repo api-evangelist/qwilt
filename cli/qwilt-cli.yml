@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Qwilt/qctl
+name: qctl
+title: Qwilt CLI (qctl)
+description: >-
+  qctl is the official unified command-line interface for interacting with
+  Qwilt Cloud services — authentication, clusters, applications, VM images, and
+  a Kubernetes zone-proxy mode that wraps kubectl against Qwilt-managed clusters.
+repository: https://github.com/Qwilt/qctl
+releases: https://github.com/Qwilt/qctl/releases
+install:
+  - method: homebrew
+    command: brew install qwilt/tap/qctl
+    platforms: [macos]
+  - method: release-binary
+    command: Download from https://github.com/Qwilt/qctl/releases
+    platforms: [linux, windows, macos]
+commands:
+  - group: auth
+    summary: Manage authentication and authorization
+    subcommands:
+      - name: login
+        summary: Login to Qwilt Cloud (flags -o/--org-id, -u/--username, -p/--password)
+      - name: print-token
+        summary: Print the cached access token in ExecCredential format for kubectl integration
+  - group: clusters
+    summary: Manage clusters
+    subcommands:
+      - { name: list, summary: List all clusters }
+      - { name: get, summary: Get cluster details }
+      - { name: create, summary: Create a new cluster }
+      - { name: update, summary: Update an existing cluster }
+      - { name: delete, summary: Delete one or more clusters (by name, selector, --all, or -f file) }
+      - { name: explain, summary: Explain cluster resource format }
+      - { name: connect, summary: Connect to a cluster }
+  - group: applications
+    summary: Manage applications
+    subcommands:
+      - { name: list, summary: List all applications }
+      - { name: get, summary: Get application details }
+      - { name: create, summary: Create a new application }
+      - { name: update, summary: Update an existing application }
+      - { name: delete, summary: Delete one or more applications }
+      - { name: explain, summary: Explain application resource format }
+  - group: images
+    summary: Manage VM images in Qwilt's image registry
+    subcommands:
+      - { name: list, summary: List all images }
+      - { name: get, summary: Get image details }
+      - { name: create, summary: Create a new image }
+      - { name: update, summary: Update an existing image }
+      - { name: delete, summary: Delete one or more images }
+      - { name: explain, summary: Explain image resource format }
+      - { name: push, summary: Push a qcow2 image to Qwilt's image registry (--tag) }
+  - group: version
+    summary: Display version information
+key_flows:
+  - name: Zone proxy (kubectl)
+    summary: >-
+      With the --zone flag, qctl discovers zone details, authenticates with the
+      cached qctl token, and proxies kubectl commands against the Qwilt-managed
+      cluster using direct kubectl server/token flags.

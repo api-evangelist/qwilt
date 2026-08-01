@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/qwilt-certificate-manager-openapi.yml, openapi/qwilt-media-delivery-openapi.yml,
+  openapi/qwilt-origin-allow-list-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+  sources:
+  - openapi/qwilt-certificate-manager-openapi.yml
+  - openapi/qwilt-media-delivery-openapi.yml
+  - openapi/qwilt-origin-allow-list-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token from the login service (cqloudLoginToken).
+  sources:
+  - openapi/qwilt-certificate-manager-openapi.yml
+  - openapi/qwilt-media-delivery-openapi.yml
+  - openapi/qwilt-origin-allow-list-openapi.yml

@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qwilt.com/docs/release-notes
+versioning:
+  scheme: uri-path
+  current: v2 (Sites, Certificates); v1 (Site Configurations); v1.0 (Origin Allow List)
+  docs: https://docs.qwilt.com/docs/qwilt-products-and-features
+release_notes:
+  url: https://docs.qwilt.com/docs/release-notes
+  cadence: monthly
+  archives:
+    - https://docs.qwilt.com/docs/2025-release-notes
+    - https://docs.qwilt.com/docs/2024-release-notes
+    - https://docs.qwilt.com/docs/2023-release-notes
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    Qwilt announces product/dashboard deprecations in the monthly release notes
+    (e.g. the Service Provider Open Caching Dashboard was deprecated in May 2025
+    and the SP OPS Dashboard in January 2025), but publishes no formal API
+    deprecation policy or RFC 8594 Sunset/Deprecation header contract.
+status_page: null
+status_page_notes: >-
+  No public Qwilt status page was found. qwilt.statuspage.io resolves to the
+  generic Atlassian Statuspage marketing page, not a Qwilt status feed.
+sla:
+  url: null
+deprecated_operations: []

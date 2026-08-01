@@ -1,0 +1,61 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/qwilt-media-delivery-openapi.yml, openapi/qwilt-certificate-manager-openapi.yml, openapi/qwilt-origin-allow-list-openapi.yml
+description: >-
+  Entity-relationship graph for the Qwilt CDN APIs, derived from the OpenAPI
+  paths and object references transcribed from the open-source Terraform provider
+  client.
+entities:
+  - name: Site
+    id: siteId
+    description: A media-delivery site (the top-level CDN object).
+    source: openapi/qwilt-media-delivery-openapi.yml
+  - name: SiteConfiguration
+    id: revisionId
+    description: A versioned configuration revision belonging to a site (hosts, origins, rules, paths).
+    source: openapi/qwilt-media-delivery-openapi.yml
+  - name: PublishingOperation
+    id: publishId
+    description: A publish / un-publish / republish / cancel operation against a site.
+    source: openapi/qwilt-media-delivery-openapi.yml
+  - name: Certificate
+    id: certId
+    description: A TLS certificate that can be linked to a site.
+    source: openapi/qwilt-certificate-manager-openapi.yml
+  - name: CertificateTemplate
+    id: certificateTemplateId
+    description: A template driving a Qwilt-managed CSR workflow.
+    source: openapi/qwilt-certificate-manager-openapi.yml
+  - name: OriginAllowList
+    id: null
+    description: Read-only list of Qwilt CDN egress IPs grouped by ISP network.
+    source: openapi/qwilt-origin-allow-list-openapi.yml
+relationships:
+  - from: Site
+    to: SiteConfiguration
+    type: has_many
+    via: siteId
+  - from: SiteConfiguration
+    to: Site
+    type: belongs_to
+    via: siteId
+  - from: Site
+    to: PublishingOperation
+    type: has_many
+    via: siteId
+  - from: PublishingOperation
+    to: Site
+    type: belongs_to
+    via: siteId
+  - from: PublishingOperation
+    to: SiteConfiguration
+    type: belongs_to
+    via: revisionId
+  - from: Site
+    to: Certificate
+    type: has_one
+    via: linked-certificate
+  - from: Certificate
+    to: CertificateTemplate
+    type: belongs_to
+    via: certificateTemplateId

@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/qwilt-media-delivery-openapi.yml, openapi/qwilt-certificate-manager-openapi.yml
+skills:
+  - file: qwilt-provision-and-publish-site.md
+    name: Provision and publish a Qwilt CDN site
+    api: openapi/qwilt-media-delivery-openapi.yml
+    operations: [createSite, createSiteConfiguration, createPublishingOperation, getPublishingOperation]
+  - file: qwilt-attach-tls-certificate.md
+    name: Attach a TLS certificate to a Qwilt CDN site
+    api: openapi/qwilt-certificate-manager-openapi.yml
+    operations: [listCertificateTemplates, createCertificateTemplate, createCertificate, getCertificate]

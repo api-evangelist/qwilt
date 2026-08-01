@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of Qwilt hosts
+notes: >-
+  Probed the /.well-known/ discovery surface on the Qwilt website, docs, and API
+  hosts. No well-known documents were served (security.txt, openid-configuration,
+  oauth-authorization-server, api-catalog, ai-plugin.json all 404/403). Absence is
+  valid recorded data.
+hosts:
+  - host: https://qwilt.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+  - host: https://docs.qwilt.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+  - host: https://api-docs.qwilt.cqloud.com
+    documents:
+      - { path: /.well-known/security.txt, status: 403 }
+  - host: https://qc-services.cqloud.com
+    documents:
+      - { path: /.well-known/security.txt, status: 403 }

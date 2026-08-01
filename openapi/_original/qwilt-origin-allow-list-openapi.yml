@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Origin Allow List API
+  version: '1.0'
+  description: >-
+    The Qwilt Origin Allow List (device-ip) API returns the list of IP addresses
+    the Qwilt CDN may use to fetch content from a customer origin, grouped by ISP
+    network, so operators can allow-list Qwilt egress. Endpoint, method, path, and
+    the authentication model were transcribed faithfully from Qwilt's open-source
+    Terraform provider client (github.com/Qwilt/terraform-provider-qwilt).
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/
+  license:
+    name: Proprietary
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/blob/main/qwilt/cdn/client/ip_allow_list.go
+servers:
+  - url: https://device-ip.cqloud.com
+    description: Qwilt CDN production (Origin Allow List host)
+security:
+  - apiKeyAuth: []
+  - bearerAuth: []
+tags:
+  - name: Origin Allow List
+    description: Qwilt CDN egress IP addresses for origin allow-listing
+paths:
+  /api/1.0/network/device-ip:
+    get:
+      operationId: getOriginAllowList
+      tags: [Origin Allow List]
+      summary: Get the origin allow list
+      description: >-
+        Retrieve the comprehensive list of IP addresses that Qwilt CDN may use to
+        fetch content from your origin, grouped by ISP network.
+      responses:
+        '200':
+          description: The origin allow list.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OriginAllowList' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token from the login service (cqloudLoginToken).
+  responses:
+    Unauthorized:
+      description: Authentication is missing or invalid.
+  schemas:
+    OriginAllowList:
+      type: object
+      description: IP addresses Qwilt CDN uses to fetch from origin, grouped by ISP network.
+      additionalProperties: true

@@ -1,7 +1,17 @@
 aid: qwilt
 name: Qwilt
-description: 'Qwilt is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. Sector: media. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Qwilt operates a global content delivery network built on the Open Edge Cloud —
+  a true edge cloud with thousands of deeply embedded caching nodes inside
+  service-provider networks — for OTT video streaming, low-latency live, gaming,
+  and software delivery. Qwilt exposes programmatic control of its CDN through the
+  Sites API (media-delivery site objects, versioned configurations, and
+  publish/un-publish operations), the Certificate Manager API (TLS certificates
+  and Qwilt-managed CSR workflows), the Origin Allow List API, plus Delivery
+  Reports and Keys Manager APIs. Automation is available via the official Qwilt
+  Terraform provider and the qctl command-line interface. Authentication uses QC
+  Services API keys (Viewer/Editor) sent as an X-API-KEY Authorization header, or
+  a username/password bearer token.
 url: https://raw.githubusercontent.com/api-evangelist/qwilt/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,18 +19,160 @@ x-backed-by:
 - accel
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://qwilt.com/wp-content/themes/qwilt/resources/img/favicons/favicon-196x196.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Media
-apis: []
+- CDN
+- Content Delivery Network
+- Edge Computing
+- Video Streaming
+- Open Caching
+- Media Delivery
+- Certificates
+- Infrastructure
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: qwilt:qwilt-certificate-templates-api
+  name: Qwilt Certificate Templates API
+  description: Certificate templates for Qwilt-managed CSR workflows
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Certificate Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-certificate-templates-api-openapi.yml
+- aid: qwilt:qwilt-certificates-api
+  name: Qwilt Certificates API
+  description: TLS certificates
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-certificates-api-openapi.yml
+- aid: qwilt:qwilt-origin-allow-list-api
+  name: Qwilt Origin Allow List API
+  description: Qwilt CDN egress IP addresses for origin allow-listing
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Origin Allow List
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-origin-allow-list-api-openapi.yml
+- aid: qwilt:qwilt-publishing-operations-api
+  name: Qwilt Publishing Operations API
+  description: Publish, un-publish, republish and cancel operations
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Publishing Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-publishing-operations-api-openapi.yml
+- aid: qwilt:qwilt-site-configurations-api
+  name: Qwilt Site Configurations API
+  description: Versioned site configuration revisions
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Site Configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-site-configurations-api-openapi.yml
+- aid: qwilt:qwilt-sites-api
+  name: Qwilt Sites API
+  description: CDN media-delivery site objects
+  humanURL: https://docs.qwilt.com/docs/media-delivery
+  baseURL: https://media-sites.cqloud.com
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/qwilt-sites-api-openapi.yml
 common:
 - type: Website
-  url: http://www.qwilt.com
+  url: https://www.qwilt.com
+- type: DeveloperPortal
+  url: https://qc-services.cqloud.com/
+- type: Documentation
+  url: https://docs.qwilt.com/
+- type: APIReference
+  url: https://api-docs.qwilt.cqloud.com/
+- type: GettingStarted
+  url: https://docs.qwilt.com/docs/quick-start-md
+- type: Login
+  url: https://qc-services.cqloud.com/
+- type: Support
+  url: https://qwilt.com/support/
+- type: Blog
+  url: https://qwilt.com/resources/blogs/
+- type: GitHubOrganization
+  url: https://github.com/Qwilt
+- type: TermsOfService
+  url: https://qwilt.com/qwilt-terms-of-use/
+- type: PrivacyPolicy
+  url: https://qwilt.com/privacy-policy/
+- type: Compliance
+  url: https://qwilt.com/compliance/
+- type: ChangeLog
+  url: changelog/qwilt-changelog.yml
+- type: Authentication
+  url: authentication/qwilt-authentication.yml
+- type: Conventions
+  url: conventions/qwilt-conventions.yml
+- type: Lifecycle
+  url: lifecycle/qwilt-lifecycle.yml
+- type: Conformance
+  url: conformance/qwilt-conformance.yml
+- type: ErrorCatalog
+  url: errors/qwilt-problem-types.yml
+- type: DataModel
+  url: data-model/qwilt-data-model.yml
+- type: Packages
+  url: packages/qwilt-packages.yml
+- type: SDKs
+  url: packages/qwilt-packages.yml
+- type: CLI
+  url: cli/qwilt-cli.yml
+- type: MCPServer
+  url: mcp/qwilt-mcp.yml
+- type: LLMsTxt
+  url: llms/qwilt-llms.txt
+- type: WellKnown
+  url: well-known/qwilt-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/qwilt-agentic-access.yml
+- type: TrustCenter
+  url: security/qwilt-trust-center.yml
+- type: DomainSecurity
+  url: security/qwilt-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

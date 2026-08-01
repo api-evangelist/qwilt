@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/Qwilt
+packages:
+  - language: hcl
+    registry: terraform
+    name: Qwilt/qwilt
+    url: https://registry.terraform.io/providers/Qwilt/qwilt/latest
+    install: 'terraform { required_providers { qwilt = { source = "Qwilt/qwilt" } } }'
+    official: true
+    description: >-
+      Official Qwilt Terraform provider. Manages Qwilt CDN sites, site
+      configurations, activation/publishing, certificates, certificate templates
+      and the origin allow list as infrastructure-as-code.
+    repository: https://github.com/Qwilt/terraform-provider-qwilt
+    version: 0.1.23
+  - language: go
+    registry: github
+    name: qctl
+    url: https://github.com/Qwilt/qctl
+    install: brew install qwilt/tap/qctl
+    official: true
+    description: >-
+      Official Qwilt CLI (qctl) — unified command-line interface for Qwilt Cloud
+      services (auth, clusters, applications, images, and more). Distributed via
+      the Qwilt Homebrew tap and GitHub Releases.
+    repository: https://github.com/Qwilt/qctl
+  - language: python
+    registry: github
+    name: Qsig-Token-Python
+    url: https://github.com/Qwilt/Qsig-Token-Python
+    install: git clone https://github.com/Qwilt/Qsig-Token-Python
+    official: true
+    description: >-
+      Official Qwilt Authorization Token (Qsig) generator for Python — implements
+      Qwilt URL signing / token authorization. Published on GitHub (not on PyPI as
+      of this pass).
+    repository: https://github.com/Qwilt/Qsig-Token-Python
+  - language: shell
+    registry: homebrew
+    name: qwilt/tap
+    url: https://github.com/Qwilt/homebrew-tap
+    install: brew tap qwilt/tap
+    official: true
+    description: Official Qwilt Homebrew tap distributing qctl and related tooling.
+    repository: https://github.com/Qwilt/homebrew-tap
+notes: >-
+  No first-party Qwilt client library was found on npm, PyPI, Maven Central,
+  NuGet, RubyGems, Packagist or crates.io. Qwilt's programmatic surface is the
+  Terraform provider, the qctl CLI, and the Qsig URL-signing token library.

@@ -1,0 +1,24 @@
+{
+  "provider": "qwilt",
+  "sources": [
+    "qwilt-certificate-templates-api-openapi.yml",
+    "qwilt-certificates-api-openapi.yml",
+    "qwilt-origin-allow-list-api-openapi.yml",
+    "qwilt-publishing-operations-api-openapi.yml",
+    "qwilt-site-configurations-api-openapi.yml",
+    "qwilt-sites-api-openapi.yml"
+  ],
+  "outputs": [
+    "qwilt-certificate-templates-api-openapi.yml",
+    "qwilt-certificates-api-openapi.yml",
+    "qwilt-origin-allow-list-api-openapi.yml",
+    "qwilt-publishing-operations-api-openapi.yml",
+    "qwilt-site-configurations-api-openapi.yml",
+    "qwilt-sites-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,347 @@
+openapi: 3.0.3
+info:
+  title: Qwilt CDN Media Delivery (Sites) API
+  version: v2
+  description: >-
+    The Qwilt CDN Sites API manages media-delivery site objects, their versioned
+    site configurations, and publishing operations (publish / un-publish /
+    republish) on the Qwilt Open Edge Cloud CDN. Endpoints, methods, paths, and
+    the authentication model in this specification were transcribed faithfully
+    from Qwilt's open-source Terraform provider client
+    (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Request and
+    response bodies use the fields observed in the client and public docs; where
+    the full object shape is not published, objects are left open
+    (additionalProperties true) rather than invented.
+  contact:
+    name: Qwilt Support
+    email: support@qwilt.com
+    url: https://docs.qwilt.com/
+  license:
+    name: Proprietary
+x-provenance:
+  generated: '2026-07-20'
+  method: derived
+  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client
+servers:
+  - url: https://media-sites.cqloud.com
+    description: Qwilt CDN production (Sites service host)
+security:
+  - apiKeyAuth: []
+  - bearerAuth: []
+tags:
+  - name: Sites
+    description: CDN media-delivery site objects
+  - name: Site Configurations
+    description: Versioned site configuration revisions
+  - name: Publishing Operations
+    description: Publish, un-publish, republish and cancel operations
+paths:
+  /api/v2/sites:
+    get:
+      operationId: listSites
+      tags: [Sites]
+      summary: List sites
+      description: Retrieve all media-delivery sites in the organization.
+      parameters:
+        - name: truncateConfigs
+          in: query
+          required: false
+          schema: { type: boolean }
+          description: When true, omit full configuration bodies from the response.
+      responses:
+        '200':
+          description: A list of sites.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Site' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+    post:
+      operationId: createSite
+      tags: [Sites]
+      summary: Create a site
+      description: Create a new media-delivery site.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SiteCreate' }
+      responses:
+        '201':
+          description: Site created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Site' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /api/v2/sites/{siteId}:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: getSite
+      tags: [Sites]
+      summary: Get a site
+      responses:
+        '200':
+          description: The site.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Site' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      operationId: updateSite
+      tags: [Sites]
+      summary: Update a site
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SiteCreate' }
+      responses:
+        '200':
+          description: Site updated.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Site' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      operationId: deleteSite
+      tags: [Sites]
+      summary: Delete a site
+      parameters:
+        - name: permanent
+          in: query
+          required: false
+          schema: { type: boolean }
+          description: When true, permanently delete the site.
+      responses:
+        '200': { description: Site deleted. }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/1/sites/{siteId}/configurations:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: listSiteConfigurations
+      tags: [Site Configurations]
+      summary: List site configuration revisions
+      responses:
+        '200':
+          description: Configuration revisions for the site.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/SiteConfiguration' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    post:
+      operationId: createSiteConfiguration
+      tags: [Site Configurations]
+      summary: Create a site configuration revision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SiteConfiguration' }
+      responses:
+        '201':
+          description: Configuration revision created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SiteConfiguration' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/1/sites/{siteId}/configurations/{revisionId}:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+      - name: revisionId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      operationId: getSiteConfiguration
+      tags: [Site Configurations]
+      summary: Get a site configuration revision
+      responses:
+        '200':
+          description: The configuration revision.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SiteConfiguration' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v2/sites/{siteId}/publishing-operations:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: listPublishingOperations
+      tags: [Publishing Operations]
+      summary: List publishing operations
+      responses:
+        '200':
+          description: Publishing operations for the site.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PublishingOperation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      operationId: createPublishingOperation
+      tags: [Publishing Operations]
+      summary: Publish a site configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PublishingOperation' }
+      responses:
+        '201':
+          description: Publishing operation created.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PublishingOperation' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/v2/sites/{siteId}/publishing-operations/{publishId}:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+      - name: publishId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      operationId: getPublishingOperation
+      tags: [Publishing Operations]
+      summary: Get a publishing operation
+      responses:
+        '200':
+          description: The publishing operation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PublishingOperation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v2/sites/{siteId}/publishing-operations/actions/un-publish:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+    post:
+      operationId: unpublishSite
+      tags: [Publishing Operations]
+      summary: Un-publish a site
+      responses:
+        '200': { description: Un-publish operation accepted. }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/v2/sites/{siteId}/publishing-operations/actions/republish:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+    post:
+      operationId: republishSite
+      tags: [Publishing Operations]
+      summary: Republish a site
+      responses:
+        '200': { description: Republish operation accepted. }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/v2/sites/{siteId}/publishing-operations/{publishId}/actions/cancel:
+    parameters:
+      - $ref: '#/components/parameters/SiteId'
+      - name: publishId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      operationId: cancelPublishingOperation
+      tags: [Publishing Operations]
+      summary: Cancel a publishing operation
+      responses:
+        '200': { description: Cancel operation accepted. }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        API key issued from QC Services (Administration > API Keys). Sent as
+        `Authorization: X-API-KEY <api-key>`.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token obtained by logging in with username/password against the
+        login service (returns the `cqloudLoginToken`). API-key auth is preferred.
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema: { type: string }
+      description: The site identifier.
+  responses:
+    BadRequest:
+      description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    Forbidden:
+      description: The API key lacks permission for this operation.
+    NotFound:
+      description: The requested resource does not exist.
+  schemas:
+    Site:
+      type: object
+      description: A media-delivery site.
+      additionalProperties: true
+      properties:
+        siteId: { type: string }
+        apiVersion: { type: string }
+        revisionId: { type: string }
+        siteDnsCnameDelegationTarget:
+          type: string
+          description: The CNAME delegation target for the site.
+    SiteCreate:
+      type: object
+      additionalProperties: true
+      properties:
+        apiVersion: { type: string }
+        siteName: { type: string }
+    SiteConfiguration:
+      type: object
+      description: A versioned site configuration revision.
+      additionalProperties: true
+      properties:
+        siteId: { type: string }
+        revisionId: { type: string }
+        hosts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            properties:
+              host: { type: string }
+              host-metadata:
+                type: object
+                additionalProperties: true
+                properties:
+                  endpoints:
+                    type: array
+                    items: { type: string }
+    PublishingOperation:
+      type: object
+      description: A publish / un-publish / republish operation on a site.
+      additionalProperties: true
+      properties:
+        siteId: { type: string }
+        publishId: { type: string }
+        revisionId: { type: string }
+        operationType:
+          type: string
+          description: e.g. Publish or Unpublish.

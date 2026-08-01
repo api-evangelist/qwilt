@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/ + https://docs.qwilt.com/docs/api-keys
+description: >-
+  Cross-cutting request/response conventions for the Qwilt CDN APIs, derived
+  from the open-source Terraform provider client and the public docs. Qwilt does
+  not publish a documented idempotency-key contract, so no Idempotency pointer is
+  claimed.
+authentication:
+  style: api-key-or-bearer
+  header: Authorization
+  api_key_format: 'X-API-KEY <api-key>'
+  bearer_format: 'Bearer <cqloudLoginToken>'
+  permission_levels: [Viewer (read-only), Editor (full access)]
+  key_validity_max_days: 365
+  docs: https://docs.qwilt.com/docs/api-keys
+  see: authentication/qwilt-authentication.yml
+versioning:
+  style: uri-path
+  observed_versions:
+    - 'Sites: /api/v2/sites'
+    - 'Site configurations: /api/1/sites/{siteId}/configurations'
+    - 'Certificates: /api/v2/certificates'
+    - 'Origin allow list: /api/1.0/network/device-ip'
+  see: lifecycle/qwilt-lifecycle.yml
+content_type: application/json
+idempotency:
+  documented: false
+  notes: >-
+    No idempotency-key header or parameter is documented by Qwilt. Publishing
+    operations are modeled as explicit named actions (publish / un-publish /
+    republish / cancel) rather than idempotent PUTs.
+pagination:
+  documented: false
+  notes: >-
+    List endpoints (sites, certificates, publishing-operations) were not
+    observed to document cursor/offset pagination in the provider client.
+error_envelope:
+  see: errors/qwilt-problem-types.yml
+  notes: >-
+    HTTP status codes drive success/failure in the provider client (200/201
+    success, 302 on login redirect). A structured problem+json envelope is not
+    published.

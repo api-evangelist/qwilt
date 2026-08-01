@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/qwilt-media-delivery-openapi.yml, openapi/qwilt-certificate-manager-openapi.yml, openapi/qwilt-origin-allow-list-openapi.yml
+format: http-status
+notes: >-
+  Qwilt does not publish an RFC 9457 problem+json error registry. These entries
+  are the HTTP failure responses derived from the API paths transcribed from the
+  open-source Terraform provider client (which branches on 200/201 success, 302
+  login redirect, and non-2xx failures).
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: The request body or parameters were malformed.
+    applies_to: [createSite, updateSite, createSiteConfiguration, createPublishingOperation, createCertificate, updateCertificate, createCertificateTemplate]
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid API key / bearer token.
+    applies_to: [all operations]
+  - status: 403
+    title: Forbidden
+    meaning: The API key lacks permission (Viewer key attempting an Editor operation).
+    applies_to: [listSites, createSite]
+  - status: 404
+    title: Not Found
+    meaning: The requested site, configuration, publishing operation, or certificate does not exist.
+    applies_to: [getSite, updateSite, deleteSite, getSiteConfiguration, getPublishingOperation, cancelPublishingOperation, getCertificate, updateCertificate, deleteCertificate]

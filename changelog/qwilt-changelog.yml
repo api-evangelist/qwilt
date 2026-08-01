@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.qwilt.com/docs/release-notes
+scheme: dated-monthly
+docs: https://docs.qwilt.com/docs/release-notes
+notes: >-
+  Qwilt publishes monthly release notes split into New Features and Resolved
+  Issues, archived by year (2023, 2024, 2025). Recent window captured below;
+  the live release notes are the source of truth.
+entries:
+  - date: '2025-06'
+    highlights:
+      - CP Billing Report / SP Monetization Report added
+      - Critical patch update (Teleport upgraded to 16.5.12 to address CVE-2025-49825)
+  - date: '2025-05'
+    breaking:
+      - Service Provider Open Caching Dashboard deprecated
+    highlights:
+      - Site Configuration - new support for site-level settings
+      - Site Configuration JSON - new support for the Named Private Feature format
+      - Content Publisher Dashboard - new 5-minute export option
+      - Keys Manager API - new
+      - Delivery Reports API - enhanced time filter support
+  - date: '2025-04'
+    highlights:
+      - Log Shipping - enhanced filtering capabilities
+      - QC Services dashboards and reports - new refresh behavior
+      - Service Provider Traffic Report - new table view
+  - date: '2025-03'
+    highlights:
+      - 'Media Delivery Log files - new fields: ClientIpPlaintext, xForwardedForPlaintext, cacheKey, upstreamDuration, serviceType'
+      - Now supporting Low Latency Live streaming for both HLS and DASH
+      - New average metric value in the Delivery Reports API response
+  - date: '2025-02'
+    additions:
+      - 'Delivery Reports API - groupBy=ipVersion dimension, ipVersions filter, new IP-version metrics (effective Feb 16, 2025)'
+      - SSO login now supported with custom IdP integration
+      - Organization switching now supported in the QC Services UI
+      - Compare site configuration versions (Compare JSON)
+  - date: '2025-01'
+    breaking:
+      - Service Provider OPS Dashboard deprecated
+    additions:
+      - Log Shipping - new sampling feature (send specified % of data)
+      - API Keys feature now available for Service Providers
+      - New Service Provider report
+  - date: '2024'
+    highlights:
+      - Monthly 2024 releases archived at https://docs.qwilt.com/docs/2024-release-notes

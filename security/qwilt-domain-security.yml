@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.qwilt.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Sep  5 16:46:20 2026 GMT
+  hsts: false
+- host: cert-manager.cqloud.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov 22 23:59:59 2026 GMT
+  hsts: null
+- host: media-sites.cqloud.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov 22 23:59:59 2026 GMT
+  hsts: null
+domains:
+- domain: qwilt.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: cqloud.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

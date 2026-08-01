@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Qwilt CDN Media Delivery (Sites) API
+  version: 1.0.0
+extends: openapi/qwilt-media-delivery-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-20'
+      x-apievangelist-source: https://github.com/Qwilt/terraform-provider-qwilt
+      x-apievangelist-notes: >-
+        Spec transcribed from Qwilt's open-source Terraform provider client; the
+        provider-published OpenAPI at api-docs.qwilt.cqloud.com is access-controlled.
+  - target: $.info
+    update:
+      x-agentic-access: agentic-access/qwilt-agentic-access.yml
