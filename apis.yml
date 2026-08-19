@@ -32,7 +32,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://qwilt.com/wp-content/themes/qwilt/resources/img/favicons/favicon-196x196.png
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-20'
 tags:
