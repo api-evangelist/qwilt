@@ -2,33 +2,82 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/qwilt-media-delivery-openapi.yml, openapi/qwilt-certificate-manager-openapi.yml, openapi/qwilt-origin-allow-list-openapi.yml
-notes: >-
-  No official hosted/remote Qwilt MCP server was found (checked docs, the Qwilt
-  GitHub org, and MCP registries). This is a candidate tool list derived one tool
-  per OpenAPI operation, for a potential MCP wrapper over the Qwilt CDN APIs.
+notes: No official hosted/remote Qwilt MCP server was found (checked docs, the Qwilt GitHub org, and MCP
+  registries). This is a candidate tool list derived one tool per OpenAPI operation, for a potential MCP
+  wrapper over the Qwilt CDN APIs.
 server:
   name: qwilt-cdn
   transport: http
 tools:
-  - { name: list_sites, description: List CDN media-delivery sites, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#listSites' }
-  - { name: create_site, description: Create a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#createSite' }
-  - { name: get_site, description: Get a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#getSite' }
-  - { name: update_site, description: Update a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#updateSite' }
-  - { name: delete_site, description: Delete a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#deleteSite' }
-  - { name: list_site_configurations, description: List site configuration revisions, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#listSiteConfigurations' }
-  - { name: create_site_configuration, description: Create a site configuration revision, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#createSiteConfiguration' }
-  - { name: get_site_configuration, description: Get a site configuration revision, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#getSiteConfiguration' }
-  - { name: list_publishing_operations, description: List publishing operations, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#listPublishingOperations' }
-  - { name: create_publishing_operation, description: Publish a site configuration, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#createPublishingOperation' }
-  - { name: get_publishing_operation, description: Get a publishing operation, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#getPublishingOperation' }
-  - { name: unpublish_site, description: Un-publish a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#unpublishSite' }
-  - { name: republish_site, description: Republish a site, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#republishSite' }
-  - { name: cancel_publishing_operation, description: Cancel a publishing operation, source_operation: 'openapi/qwilt-media-delivery-openapi.yml#cancelPublishingOperation' }
-  - { name: list_certificates, description: List certificates, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#listCertificates' }
-  - { name: create_certificate, description: Create a certificate, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#createCertificate' }
-  - { name: get_certificate, description: Get a certificate, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#getCertificate' }
-  - { name: update_certificate, description: Update a certificate, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#updateCertificate' }
-  - { name: delete_certificate, description: Delete a certificate, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#deleteCertificate' }
-  - { name: list_certificate_templates, description: List certificate templates, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#listCertificateTemplates' }
-  - { name: create_certificate_template, description: Create a certificate template, source_operation: 'openapi/qwilt-certificate-manager-openapi.yml#createCertificateTemplate' }
-  - { name: get_origin_allow_list, description: Get the CDN origin allow list, source_operation: 'openapi/qwilt-origin-allow-list-openapi.yml#getOriginAllowList' }
+- name: list_sites
+  description: List CDN media-delivery sites
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#listSites
+- name: create_site
+  description: Create a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#createSite
+- name: get_site
+  description: Get a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#getSite
+- name: update_site
+  description: Update a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#updateSite
+- name: delete_site
+  description: Delete a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#deleteSite
+- name: list_site_configurations
+  description: List site configuration revisions
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#listSiteConfigurations
+- name: create_site_configuration
+  description: Create a site configuration revision
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#createSiteConfiguration
+- name: get_site_configuration
+  description: Get a site configuration revision
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#getSiteConfiguration
+- name: list_publishing_operations
+  description: List publishing operations
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#listPublishingOperations
+- name: create_publishing_operation
+  description: Publish a site configuration
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#createPublishingOperation
+- name: get_publishing_operation
+  description: Get a publishing operation
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#getPublishingOperation
+- name: unpublish_site
+  description: Un-publish a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#unpublishSite
+- name: republish_site
+  description: Republish a site
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#republishSite
+- name: cancel_publishing_operation
+  description: Cancel a publishing operation
+  source_operation: openapi/qwilt-media-delivery-openapi.yml#cancelPublishingOperation
+- name: list_certificates
+  description: List certificates
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#listCertificates
+- name: create_certificate
+  description: Create a certificate
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#createCertificate
+- name: get_certificate
+  description: Get a certificate
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#getCertificate
+- name: update_certificate
+  description: Update a certificate
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#updateCertificate
+- name: delete_certificate
+  description: Delete a certificate
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#deleteCertificate
+- name: list_certificate_templates
+  description: List certificate templates
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#listCertificateTemplates
+- name: create_certificate_template
+  description: Create a certificate template
+  source_operation: openapi/qwilt-certificate-manager-openapi.yml#createCertificateTemplate
+- name: get_origin_allow_list
+  description: Get the CDN origin allow list
+  source_operation: openapi/qwilt-origin-allow-list-openapi.yml#getOriginAllowList
+deployment:
+  mode: none
+  verified: derived
+  tools: 22
+  checked: '2026-08-12'
+  source: catalog MCP census

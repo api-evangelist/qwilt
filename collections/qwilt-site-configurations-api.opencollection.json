@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qwilt CDN Certificate Manager Certificate Templates Site Configurations API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Site Configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List site configuration revisions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/1/sites/:siteId/configurations",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ]
+          },
+          "docs": "List site configuration revisions"
+        },
+        {
+          "info": {
+            "name": "Create a site configuration revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/1/sites/:siteId/configurations",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a site configuration revision"
+        },
+        {
+          "info": {
+            "name": "Get a site configuration revision",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/1/sites/:siteId/configurations/:revisionId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              },
+              {
+                "name": "revisionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a site configuration revision"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,721 @@
+{
+  "item": [
+    {
+      "id": "e2c508c4-e241-498d-af1b-11a4449ccdab",
+      "name": "Site Configurations",
+      "description": {
+        "content": "Versioned site configuration revisions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "702d9a9e-8d23-41ae-a204-5e3f95b29df5",
+          "name": "List site configuration revisions",
+          "request": {
+            "name": "List site configuration revisions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "sites",
+                ":siteId",
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) The site identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88dfa02d-6846-4283-91f3-50792ec1147d",
+              "name": "Configuration revisions for the site.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"siteId\": \"string\",\n    \"revisionId\": \"string\",\n    \"hosts\": [\n      {\n        \"host\": \"string\",\n        \"host-metadata\": {\n          \"endpoints\": [\n            \"string\",\n            \"string\"\n          ],\n          \"key_0\": 5507,\n          \"key_1\": 7833,\n          \"key_2\": \"string\"\n        }\n      },\n      {\n        \"host\": \"string\",\n        \"host-metadata\": {\n          \"endpoints\": [\n            \"string\",\n            \"string\"\n          ],\n          \"key_0\": 7192.183657019524\n        }\n      }\n    ],\n    \"key_0\": false\n  },\n  {\n    \"siteId\": \"string\",\n    \"revisionId\": \"string\",\n    \"hosts\": [\n      {\n        \"host\": \"string\",\n        \"host-metadata\": {\n          \"endpoints\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"key_0\": 8120.320843027776,\n        \"key_1\": 4991.675442239726\n      },\n      {\n        \"host\": \"string\",\n        \"host-metadata\": {\n          \"endpoints\": [\n            \"string\",\n            \"string\"\n          ],\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": false,\n          \"key_3\": \"string\"\n        }\n      }\n    ],\n    \"key_0\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0caf075f-7daa-4877-8aca-0c88fdca562d",
+              "name": "Authentication is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3298051-bf39-4f4c-839e-3949f63db7a9",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f430f799-23ae-4c43-8a4a-ee0deb3eb680",
+          "name": "Create a site configuration revision",
+          "request": {
+            "name": "Create a site configuration revision",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "sites",
+                ":siteId",
+                "configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) The site identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_0\": 379,\n        \"key_1\": 6709,\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"key_0\": 7524\n      }\n    }\n  ],\n  \"key_0\": 8370.67551218082\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04d45a2f-8651-491d-9386-b8127411ea11",
+              "name": "Configuration revision created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"key_0\": 8639.129298684693,\n      \"key_1\": 9893.211858202103\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"key_0\": 8510.975962187884\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"key_0\": 8639.129298684693,\n      \"key_1\": 9893.211858202103\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"key_0\": 8510.975962187884\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce002b0a-d9ad-4b50-9452-240d125757d5",
+              "name": "The request was malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"key_0\": 8639.129298684693,\n      \"key_1\": 9893.211858202103\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"key_0\": 8510.975962187884\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d1aaa8e-4940-41ca-a479-09bcd4e2498d",
+              "name": "Authentication is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"key_0\": 8639.129298684693,\n      \"key_1\": 9893.211858202103\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"key_0\": 8510.975962187884\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73da55cd-68ed-4190-9cec-b8e3ae2498b7",
+          "name": "Get a site configuration revision",
+          "request": {
+            "name": "Get a site configuration revision",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1",
+                "sites",
+                ":siteId",
+                "configurations",
+                ":revisionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) The site identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "revisionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93a7dec9-d4e1-4dce-a07e-658b7f8a1f8e",
+              "name": "The configuration revision.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations",
+                    ":revisionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revisionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteId\": \"<string>\",\n  \"revisionId\": \"<string>\",\n  \"hosts\": [\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"key_0\": 8639.129298684693,\n      \"key_1\": 9893.211858202103\n    },\n    {\n      \"host\": \"<string>\",\n      \"host-metadata\": {\n        \"endpoints\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"key_0\": 8510.975962187884\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f68dc084-5b92-4074-b5d4-105bac6fa18d",
+              "name": "Authentication is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations",
+                    ":revisionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revisionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e7f7852-ce67-4dbe-8e92-bff679d1f851",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1",
+                    "sites",
+                    ":siteId",
+                    "configurations",
+                    ":revisionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) The site identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "revisionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cert-manager.cqloud.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99ccc4ee-437b-4c9b-87ae-973c3275a5b8",
+    "name": "Qwilt CDN Certificate Manager Certificate Templates Site Configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.\n\nContact Support:\n Name: Qwilt Support\n Email: support@qwilt.com",
+      "type": "text/plain"
+    }
+  }
+}

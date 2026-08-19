@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qwilt CDN Certificate Manager Certificate Templates API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Certificate Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List certificate templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificate-templates"
+          },
+          "docs": "List certificate templates"
+        },
+        {
+          "info": {
+            "name": "Create a certificate template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificate-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a certificate template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

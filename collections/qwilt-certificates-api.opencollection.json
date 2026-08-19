@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qwilt CDN Certificate Manager Certificate Templates Certificates API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Certificates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List certificates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificates"
+          },
+          "docs": "List certificates"
+        },
+        {
+          "info": {
+            "name": "Create a certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a certificate"
+        },
+        {
+          "info": {
+            "name": "Get a certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificates/:certId",
+            "params": [
+              {
+                "name": "certId",
+                "value": "",
+                "type": "path",
+                "description": "The certificate identifier."
+              }
+            ]
+          },
+          "docs": "Get a certificate"
+        },
+        {
+          "info": {
+            "name": "Update a certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificates/:certId",
+            "params": [
+              {
+                "name": "certId",
+                "value": "",
+                "type": "path",
+                "description": "The certificate identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a certificate"
+        },
+        {
+          "info": {
+            "name": "Delete a certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cert-manager.cqloud.com/api/v2/certificates/:certId",
+            "params": [
+              {
+                "name": "certId",
+                "value": "",
+                "type": "path",
+                "description": "The certificate identifier."
+              }
+            ]
+          },
+          "docs": "Delete a certificate"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

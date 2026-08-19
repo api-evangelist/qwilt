@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qwilt CDN Certificate Manager Certificate Templates Publishing Operations API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publishing Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List publishing operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ]
+          },
+          "docs": "List publishing operations"
+        },
+        {
+          "info": {
+            "name": "Publish a site configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a site configuration"
+        },
+        {
+          "info": {
+            "name": "Get a publishing operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations/:publishId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              },
+              {
+                "name": "publishId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a publishing operation"
+        },
+        {
+          "info": {
+            "name": "Un-publish a site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations/actions/un-publish",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ]
+          },
+          "docs": "Un-publish a site"
+        },
+        {
+          "info": {
+            "name": "Republish a site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations/actions/republish",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              }
+            ]
+          },
+          "docs": "Republish a site"
+        },
+        {
+          "info": {
+            "name": "Cancel a publishing operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cert-manager.cqloud.com/api/v2/sites/:siteId/publishing-operations/:publishId/actions/cancel",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path",
+                "description": "The site identifier."
+              },
+              {
+                "name": "publishId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a publishing operation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
