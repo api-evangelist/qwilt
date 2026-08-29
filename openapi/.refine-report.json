@@ -1,24 +1,33 @@
 {
   "provider": "qwilt",
   "sources": [
-    "qwilt-certificate-templates-api-openapi.yml",
-    "qwilt-certificates-api-openapi.yml",
-    "qwilt-origin-allow-list-api-openapi.yml",
-    "qwilt-publishing-operations-api-openapi.yml",
-    "qwilt-site-configurations-api-openapi.yml",
-    "qwilt-sites-api-openapi.yml"
+    "_original/qwilt-certificate-manager-openapi.yml",
+    "_original/qwilt-media-delivery-openapi.yml",
+    "_original/qwilt-origin-allow-list-openapi.yml"
   ],
   "outputs": [
     "qwilt-certificate-templates-api-openapi.yml",
     "qwilt-certificates-api-openapi.yml",
-    "qwilt-origin-allow-list-api-openapi.yml",
     "qwilt-publishing-operations-api-openapi.yml",
     "qwilt-site-configurations-api-openapi.yml",
-    "qwilt-sites-api-openapi.yml"
+    "qwilt-sites-api-openapi.yml",
+    "qwilt-origin-allow-list-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "qwilt-certificate-manager-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "qwilt-media-delivery-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "qwilt-origin-allow-list-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "qwilt-certificate-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qwilt-certificates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qwilt-origin-allow-list-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qwilt-publishing-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qwilt-site-configurations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qwilt-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

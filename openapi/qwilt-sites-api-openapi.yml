@@ -1,17 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Qwilt CDN Certificate Manager Certificate Templates Sites API
+  title: Qwilt CDN Media Delivery () Sites API
   version: v2
-  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  description: The Qwilt CDN Sites API manages media-delivery site objects, their versioned site configurations, and publishing operations (publish / un-publish / republish) on the Qwilt Open Edge Cloud CDN. Endpoints, methods, paths, and the authentication model in this specification were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Request and response bodies use the fields observed in the client and public docs; where the full object shape is not published, objects are left open (additionalProperties true) rather than invented.
   contact:
     name: Qwilt Support
     email: support@qwilt.com
-    url: https://docs.qwilt.com/docs/certificate-management-1
+    url: https://docs.qwilt.com/
   license:
     name: Proprietary
 servers:
-- url: https://cert-manager.cqloud.com
-  description: Qwilt CDN production (Certificate Manager host)
+- url: https://media-sites.cqloud.com
+  description: Qwilt CDN production (Sites service host)
 security:
 - apiKeyAuth: []
 - bearerAuth: []
@@ -135,14 +135,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Forbidden:
-      description: The API key lacks permission for this operation.
-    NotFound:
-      description: The requested resource does not exist.
-    Unauthorized:
-      description: Authentication is missing or invalid.
     BadRequest:
       description: The request was malformed.
+    NotFound:
+      description: The requested resource does not exist.
+    Forbidden:
+      description: The API key lacks permission for this operation.
+    Unauthorized:
+      description: Authentication is missing or invalid.
   schemas:
     Site:
       type: object
@@ -179,11 +179,11 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: 'API key sent as `Authorization: X-API-KEY <api-key>`.'
+      description: 'API key issued from QC Services (Administration > API Keys). Sent as `Authorization: X-API-KEY <api-key>`.'
     bearerAuth:
       type: http
       scheme: bearer
-      description: Bearer token from the login service (cqloudLoginToken).
+      description: Bearer token obtained by logging in with username/password against the login service (returns the `cqloudLoginToken`). API-key auth is preferred.
 x-provenance:
   generated: '2026-07-20'
   method: derived

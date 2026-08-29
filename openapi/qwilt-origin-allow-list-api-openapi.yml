@@ -1,17 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Qwilt CDN Certificate Manager Certificate Templates Origin Allow List API
-  version: v2
-  description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
+  title: Qwilt CDN Origin Allow List API
+  version: '1.0'
+  description: The Qwilt Origin Allow List (device-ip) API returns the list of IP addresses the Qwilt CDN may use to fetch content from a customer origin, grouped by ISP network, so operators can allow-list Qwilt egress. Endpoint, method, path, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt).
   contact:
     name: Qwilt Support
     email: support@qwilt.com
-    url: https://docs.qwilt.com/docs/certificate-management-1
+    url: https://docs.qwilt.com/
   license:
     name: Proprietary
 servers:
-- url: https://cert-manager.cqloud.com
-  description: Qwilt CDN production (Certificate Manager host)
+- url: https://device-ip.cqloud.com
+  description: Qwilt CDN production (Origin Allow List host)
 security:
 - apiKeyAuth: []
 - bearerAuth: []
@@ -36,14 +36,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication is missing or invalid.
   schemas:
     OriginAllowList:
       type: object
       description: IP addresses Qwilt CDN uses to fetch from origin, grouped by ISP network.
       additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Authentication is missing or invalid.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
@@ -57,4 +57,4 @@ components:
 x-provenance:
   generated: '2026-07-20'
   method: derived
-  source: https://github.com/Qwilt/terraform-provider-qwilt/tree/main/qwilt/cdn/client
+  source: https://github.com/Qwilt/terraform-provider-qwilt/blob/main/qwilt/cdn/client/ip_allow_list.go

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Qwilt CDN Certificate Manager Certificate Templates Certificates API
+  title: Qwilt CDN Certificate Manager Certificates API
   version: v2
   description: The Qwilt Certificate Manager API manages TLS certificates, certificate templates, and certificate signing request (CSR) workflows used to secure Qwilt CDN sites. Endpoints, methods, paths, and the authentication model were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Object shapes are left open where the full body is not publicly published, rather than invented.
   contact:
@@ -114,13 +114,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource does not exist.
-    Unauthorized:
-      description: Authentication is missing or invalid.
-    BadRequest:
-      description: The request was malformed.
   parameters:
     CertId:
       name: certId
@@ -129,6 +122,13 @@ components:
       schema:
         type: string
       description: The certificate identifier.
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+    BadRequest:
+      description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
   schemas:
     Certificate:
       type: object
