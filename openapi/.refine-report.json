@@ -20,7 +20,8 @@
     "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "qwilt-certificate-manager-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "qwilt-media-delivery-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "qwilt-origin-allow-list-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+    "qwilt-origin-allow-list-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "qwilt-certificate-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",

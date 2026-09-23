@@ -114,21 +114,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    CertId:
-      name: certId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The certificate identifier.
-  responses:
-    NotFound:
-      description: The requested resource does not exist.
-    BadRequest:
-      description: The request was malformed.
-    Unauthorized:
-      description: Authentication is missing or invalid.
   schemas:
     Certificate:
       type: object
@@ -140,6 +125,21 @@ components:
         certificateManagerType:
           type: string
           description: e.g. self-managed or Qwilt-managed.
+  responses:
+    BadRequest:
+      description: The request was malformed.
+    NotFound:
+      description: The requested resource does not exist.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+  parameters:
+    CertId:
+      name: certId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The certificate identifier.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

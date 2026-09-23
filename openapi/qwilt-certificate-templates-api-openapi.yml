@@ -59,11 +59,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: The request was malformed.
-    Unauthorized:
-      description: Authentication is missing or invalid.
   schemas:
     CertificateTemplate:
       type: object
@@ -72,6 +67,11 @@ components:
       properties:
         certificateTemplateId:
           type: string
+  responses:
+    BadRequest:
+      description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

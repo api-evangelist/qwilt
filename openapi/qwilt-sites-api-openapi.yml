@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Qwilt CDN Media Delivery () Sites API
   version: v2
-  description: The Qwilt CDN Sites API manages media-delivery site objects, their versioned site configurations, and publishing operations (publish / un-publish / republish) on the Qwilt Open Edge Cloud CDN. Endpoints, methods, paths, and the authentication model in this specification were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Request and response bodies use the fields observed in the client and public docs; where the full object shape is not published, objects are left open (additionalProperties true) rather than invented.
+  description: The Qwilt CDN Sites API manages media-delivery site objects, their versioned site configurations, and publishing operations (publish / un-publish / republish) on the Qwilt Open Edge Cloud CDN.
   contact:
     name: Qwilt Support
     email: support@qwilt.com
@@ -134,15 +134,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request was malformed.
-    NotFound:
-      description: The requested resource does not exist.
-    Forbidden:
-      description: The API key lacks permission for this operation.
-    Unauthorized:
-      description: Authentication is missing or invalid.
   schemas:
     Site:
       type: object
@@ -166,6 +157,15 @@ components:
           type: string
         siteName:
           type: string
+  responses:
+    BadRequest:
+      description: The request was malformed.
+    NotFound:
+      description: The requested resource does not exist.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+    Forbidden:
+      description: The API key lacks permission for this operation.
   parameters:
     SiteId:
       name: siteId

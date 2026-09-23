@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Qwilt CDN Media Delivery (Sites) Publishing Operations API
   version: v2
-  description: The Qwilt CDN Sites API manages media-delivery site objects, their versioned site configurations, and publishing operations (publish / un-publish / republish) on the Qwilt Open Edge Cloud CDN. Endpoints, methods, paths, and the authentication model in this specification were transcribed faithfully from Qwilt's open-source Terraform provider client (github.com/Qwilt/terraform-provider-qwilt, qwilt/cdn/client). Request and response bodies use the fields observed in the client and public docs; where the full object shape is not published, objects are left open (additionalProperties true) rather than invented.
+  description: The Qwilt CDN Sites API manages media-delivery site objects, their versioned site configurations, and publishing operations (publish / un-publish / republish) on the Qwilt Open Edge Cloud CDN.
   contact:
     name: Qwilt Support
     email: support@qwilt.com
