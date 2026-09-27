@@ -131,13 +131,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request was malformed.
-    NotFound:
-      description: The requested resource does not exist.
-    Unauthorized:
-      description: Authentication is missing or invalid.
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
   schemas:
     PublishingOperation:
       type: object
@@ -153,14 +154,13 @@ components:
         operationType:
           type: string
           description: e.g. Publish or Unpublish.
-  parameters:
-    SiteId:
-      name: siteId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The site identifier.
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+    BadRequest:
+      description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

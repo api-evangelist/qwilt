@@ -134,6 +134,23 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Forbidden:
+      description: The API key lacks permission for this operation.
+    NotFound:
+      description: The requested resource does not exist.
+    BadRequest:
+      description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
   schemas:
     Site:
       type: object
@@ -157,23 +174,6 @@ components:
           type: string
         siteName:
           type: string
-  responses:
-    BadRequest:
-      description: The request was malformed.
-    NotFound:
-      description: The requested resource does not exist.
-    Unauthorized:
-      description: Authentication is missing or invalid.
-    Forbidden:
-      description: The API key lacks permission for this operation.
-  parameters:
-    SiteId:
-      name: siteId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The site identifier.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
