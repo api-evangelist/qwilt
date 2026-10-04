@@ -36,14 +36,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication is missing or invalid.
   schemas:
     OriginAllowList:
       type: object
       description: IP addresses Qwilt CDN uses to fetch from origin, grouped by ISP network.
       additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Authentication is missing or invalid.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

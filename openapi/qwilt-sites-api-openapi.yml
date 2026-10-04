@@ -135,14 +135,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Authentication is missing or invalid.
-    NotFound:
-      description: The requested resource does not exist.
     BadRequest:
       description: The request was malformed.
+    Unauthorized:
+      description: Authentication is missing or invalid.
     Forbidden:
       description: The API key lacks permission for this operation.
+    NotFound:
+      description: The requested resource does not exist.
   schemas:
     Site:
       type: object

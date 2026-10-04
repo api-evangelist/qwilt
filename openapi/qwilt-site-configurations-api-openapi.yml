@@ -88,20 +88,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    BadRequest:
+      description: The request was malformed.
     Unauthorized:
       description: Authentication is missing or invalid.
     NotFound:
       description: The requested resource does not exist.
-    BadRequest:
-      description: The request was malformed.
-  parameters:
-    SiteId:
-      name: siteId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The site identifier.
   schemas:
     SiteConfiguration:
       type: object
@@ -128,6 +120,14 @@ components:
                     type: array
                     items:
                       type: string
+  parameters:
+    SiteId:
+      name: siteId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The site identifier.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
