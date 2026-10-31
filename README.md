@@ -64,6 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Qwilt is a company surfaced as a portfolio company of accel and added to the API Evangelist network as a stub for enrichment. Sector: media. This profile is a lead awaiting the enrichment pipeline.
+Qwilt operates a global content delivery network built on the Open Edge Cloud — a true edge cloud with thousands of deeply embedded caching nodes inside service-provider networks — for OTT video streaming, low-latency live, gaming, and software delivery. Qwilt exposes programmatic control of its CDN through the Sites API (media-delivery site objects, versioned configurations, and publish/un-publish operations), the Certificate Manager API (TLS certificates and Qwilt-managed CSR workflows), the Origin Allow List API, plus Delivery Reports and Keys Manager APIs. Automation is available via the official Qwilt Terraform provider and the qctl command-line interface. Authentication uses QC Services API keys (Viewer/Editor) sent as an X-API-KEY Authorization header, or a username/password bearer token.
 
-Backed by: accel — http://www.qwilt.com
+**Areas:** Company · Media · CDN · Edge Computing · Video Streaming · Open Caching · Media Delivery · Certificates · Infrastructure
+
+## Qwilt on APIs.io
+
+Everything profiled for Qwilt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/qwilt/](https://apis.io/providers/qwilt/)** — or go straight to one of the APIs or properties below.
+
+### APIs (6)
+
+- [Qwilt Certificate Templates API](https://apis.io/apis/qwilt/qwilt-certificate-templates-api/) — Certificate templates for Qwilt-managed CSR workflows
+- [Qwilt Certificates API](https://apis.io/apis/qwilt/qwilt-certificates-api/) — TLS certificates
+- [Qwilt Origin Allow List API](https://apis.io/apis/qwilt/qwilt-origin-allow-list-api/) — Qwilt CDN egress IP addresses for origin allow-listing
+- [Qwilt Publishing Operations API](https://apis.io/apis/qwilt/qwilt-publishing-operations-api/) — Publish, un-publish, republish and cancel operations
+- [Qwilt Site Configurations API](https://apis.io/apis/qwilt/qwilt-site-configurations-api/) — Versioned site configuration revisions
+- [Qwilt Sites API](https://apis.io/apis/qwilt/qwilt-sites-api/) — CDN media-delivery site objects
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [qwilt-cdn](https://apis.io/servers/qwilt/qwilt-cdn/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Qwilt Agentic Access](https://apis.io/agentic-access/qwilt/qwilt-agentic-access/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Qwilt CDN Certificate Manager Certificate Templates API](https://apis.io/collections/qwilt/open-qwilt-certificate-templates-api/)
+- [Qwilt CDN Certificate Manager Certificate Templates Certificates API](https://apis.io/collections/qwilt/open-qwilt-certificates-api/)
+- [Qwilt CDN Certificate Manager Certificate Templates Origin Allow List API](https://apis.io/collections/qwilt/open-qwilt-origin-allow-list-api/)
+- [Qwilt CDN Certificate Manager Certificate Templates Publishing Operations API](https://apis.io/collections/qwilt/open-qwilt-publishing-operations-api/)
+- [Qwilt CDN Certificate Manager Certificate Templates Site Configurations API](https://apis.io/collections/qwilt/open-qwilt-site-configurations-api/)
+- [Qwilt CDN Certificate Manager Certificate Templates Sites API](https://apis.io/collections/qwilt/open-qwilt-sites-api/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Qwilt Certificate Manager Overlay](https://apis.io/overlays/qwilt/qwilt-certificate-manager-overlay/)
+- [Qwilt Media Delivery Overlay](https://apis.io/overlays/qwilt/qwilt-media-delivery-overlay/)
+- [Qwilt Origin Allow List Overlay](https://apis.io/overlays/qwilt/qwilt-origin-allow-list-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Qwilt Authentication](https://apis.io/security/qwilt/qwilt-authentication/)
+- [Qwilt Domain Security](https://apis.io/security/qwilt/qwilt-domain-security/)
+- [Qwilt Trust Center](https://apis.io/security/qwilt/qwilt-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.qwilt.com)
+- [Documentation](https://docs.qwilt.com/)
+- [Getting started](https://docs.qwilt.com/docs/quick-start-md)
+- [API reference](https://api-docs.qwilt.cqloud.com/)
+- [Support](https://qwilt.com/support/)
+- [Blog](https://qwilt.com/resources/blogs/)
+- [Compliance](https://qwilt.com/compliance/)
+- [Terms of service](https://qwilt.com/qwilt-terms-of-use/)
+- [Privacy policy](https://qwilt.com/privacy-policy/)
+- [GitHub](https://github.com/Qwilt)
+
+## API Evangelist rating
+
+**Kin Score 41.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 16.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 50.0 |
+
+**Agent readiness 21.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/qwilt/](https://apis.io/providers/qwilt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Qwilt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/qwilt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
